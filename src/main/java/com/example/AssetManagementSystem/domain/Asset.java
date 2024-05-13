@@ -62,6 +62,13 @@ public class Asset {
 
 
     /**
+     * currency .
+     */
+    @Column(name="currency",nullable = false,updatable = false)
+    private String currency;
+
+
+    /**
      * Default constructor.
      */
     Asset(){
@@ -80,7 +87,7 @@ public class Asset {
      * @param cost  of asset.
      * @param depreciationRate of asset.
      */
-    public Asset(final String title,final Date date,final BigDecimal cost,final BigDecimal depreciationRate){
+    public Asset(final String title,final Date date,final BigDecimal cost,final BigDecimal depreciationRate,final String currency){
         super();
         this.title=title;
         this.date=date;
@@ -89,6 +96,7 @@ public class Asset {
         this.yearOfPurchase=cal1.get(Calendar.YEAR);
         this.cost=cost;
         this.depreciationRate=depreciationRate.divide(new BigDecimal(100),2, RoundingMode.CEILING);;
+        this.currency=currency;
     }
 
 
@@ -130,7 +138,13 @@ public class Asset {
     }
 
 
-
+    /**
+     *
+     * @param currency
+     */
+    public void setCurrency(final String currency){
+        this.currency=currency;
+    }
 
 
     /**
@@ -175,6 +189,13 @@ public class Asset {
      * @return the year of the purchase.
      */
     public int getYear(){return yearOfPurchase;}
+
+
+    /**
+     *
+     * @return currency.
+     */
+    public String getCurrency(){return currency;}
 
 
 }

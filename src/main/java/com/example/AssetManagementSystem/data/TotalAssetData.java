@@ -21,10 +21,20 @@ public class TotalAssetData {
      */
     private Double totalValueOfAssets;
 
-    public TotalAssetData(final long assetCount,final BigDecimal totalCostOfAssets,final Double totalValueOfAssets) {
+
+    private String currency;
+    /**
+     * 
+     * @param assetCount
+     * @param totalCostOfAssets
+     * @param totalValueOfAssets
+     */
+
+    public TotalAssetData(final long assetCount,final BigDecimal totalCostOfAssets,final Double totalValueOfAssets,final String currency) {
         this.assetCount = assetCount;
         this.totalCostOfAssets = totalCostOfAssets;
         this.totalValueOfAssets = totalValueOfAssets;
+        this.currency=currency;
     }
 
 
@@ -52,4 +62,6 @@ public class TotalAssetData {
     public Double getTotalValueOfAssets() {
         return totalValueOfAssets;
     }
+
+    public String getCurrency(){return currency;}
 }

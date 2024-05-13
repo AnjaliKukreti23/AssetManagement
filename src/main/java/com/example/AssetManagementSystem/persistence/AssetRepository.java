@@ -28,8 +28,9 @@ public interface AssetRepository extends CrudRepository<Asset,Long> {
 
 
    @Query(
-           value="SELECT "+"new com.example.AssetManagementSystem.data.TotalAssetData(COUNT(asset.title),SUM(asset.cost),SUM((asset.cost)*POWER(1-asset.depreciationRate,DATEDIFF(year,asset.date,current_date)))) "
-           +"FROM Asset asset"
+           value="SELECT "+"new com.example.AssetManagementSystem.data.TotalAssetData(COUNT(asset.title),SUM(asset.cost),SUM((asset.cost)*POWER(1-asset.depreciationRate,DATEDIFF(year,asset.date,current_date))),asset.currency) "
+           +"FROM Asset asset "
+           +"GROUP BY(asset.currency) "
    )
 
     List<TotalAssetData> getTotalSummaryOfAssets();
